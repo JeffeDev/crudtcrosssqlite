@@ -24,7 +24,8 @@ public class MainMenu extends MainWindow {
 		switch (event.type) {
 		case ControlEvent.PRESSED:
 			if (event.target == btSorvetes) {
-				
+				IncluirSorveteWindow sorvetesWindow = new IncluirSorveteWindow();
+				sorvetesWindow.popup();
 			}
 			break;
 		default:

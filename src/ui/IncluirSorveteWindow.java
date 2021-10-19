@@ -5,6 +5,7 @@ import totalcross.ui.Button;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
 import totalcross.ui.Window;
+import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 
@@ -59,11 +60,32 @@ public class IncluirSorveteWindow extends Window {
     	case ControlEvent.PRESSED:
     		if (event.target == btVoltar) {
     			this.unpop();
+    		} else if (event.target == btInserir) {
+    			insertSorvete();
     		}
     		break;
     	default:
     		break;
     	}
     	super.onEvent(event);
+    }
+    
+    
+    public void insertSorvete() {
+    	String sabor = editSabor.getText();
+    	if (sabor.isEmpty()) {
+    		new MessageBox("Atenção!", "Digite um sabor!").popup();;
+    		return;
+    	}
+    	String valor = editValor.getText();
+    	if (valor.isEmpty()) {
+    		new MessageBox("Atenção!", "Digite um valor!").popup();;
+    		return;
+    	}
+    	String estoque = editEstoque.getText();
+    	if (estoque.isEmpty()) {
+    		new MessageBox("Atenção!", "Digite um estoque!").popup();;
+    		return;
+    	}
     }
 }
