@@ -1,6 +1,8 @@
 package ui;
 
+import domain.Sorvete;
 import totalcross.sys.Settings;
+import totalcross.sys.Vm;
 import totalcross.ui.Button;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
@@ -74,18 +76,39 @@ public class IncluirSorveteWindow extends Window {
     public void insertSorvete() {
     	String sabor = editSabor.getText();
     	if (sabor.isEmpty()) {
-    		new MessageBox("Atenção!", "Digite um sabor!").popup();;
+    		new MessageBox("Atenção!", "Digite um sabor!").popup();
     		return;
     	}
     	String valor = editValor.getText();
     	if (valor.isEmpty()) {
-    		new MessageBox("Atenção!", "Digite um valor!").popup();;
+    		new MessageBox("Atenção!", "Digite um valor!").popup();
     		return;
     	}
     	String estoque = editEstoque.getText();
     	if (estoque.isEmpty()) {
-    		new MessageBox("Atenção!", "Digite um estoque!").popup();;
+    		new MessageBox("Atenção!", "Digite um estoque!").popup();
     		return;
     	}
+    	
+    	double valorAsDouble = 0;
+    	double estoqueAsDouble = 0;
+    	
+    	try {
+    		valor = valor.replace(",", ".");
+    		valorAsDouble = Double.parseDouble(valor);
+    		
+    		estoque = valor.replace(",", ".");
+    		estoqueAsDouble = Double.parseDouble(estoque);	
+    		
+    	} catch (Exception e){
+    		Vm.debug(e.getMessage());
+    		return;
+    	}
+    	
+    	Sorvete sorvete = new Sorvete();
+    	sorvete.sabor = sabor;
+    	sorvete.valor = valorAsDouble;
+    	sorvete.estoque = estoqueAsDouble;
+    	
     }
 }
