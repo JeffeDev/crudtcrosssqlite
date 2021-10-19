@@ -5,6 +5,8 @@ import totalcross.ui.Button;
 import totalcross.ui.Edit;
 import totalcross.ui.Label;
 import totalcross.ui.Window;
+import totalcross.ui.event.ControlEvent;
+import totalcross.ui.event.Event;
 
 public class IncluirSorveteWindow extends Window {
     private Edit editSabor;
@@ -49,5 +51,19 @@ public class IncluirSorveteWindow extends Window {
     public void popup() {
     	setRect(0, 0, Settings.screenWidth, Settings.screenHeight);
     	super.popup();
+    }
+    
+    @Override
+    public void onEvent(Event event) {
+    	switch(event.type) {
+    	case ControlEvent.PRESSED:
+    		if (event.target == btVoltar) {
+    			this.unpop();
+    		}
+    		break;
+    	default:
+    		break;
+    	}
+    	super.onEvent(event);
     }
 }
