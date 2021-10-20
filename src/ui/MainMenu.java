@@ -1,14 +1,11 @@
 package ui;
-
 import totalcross.ui.Button;
 import totalcross.ui.MainWindow;
 import totalcross.ui.event.ControlEvent;
 import totalcross.ui.event.Event;
 
 public class MainMenu extends MainWindow {
-	
 	private Button btSorvetes;
-	
 
 	public MainMenu() {
 		btSorvetes = new Button("Sorvetes");
